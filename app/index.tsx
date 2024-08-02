@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import Title from "@/components/Title";
+import { Link, router } from "expo-router";
 
 export default function Home() {
     return (
@@ -15,7 +16,11 @@ export default function Home() {
                     resizeMode="contain"
                 />
             </View>
-            <TouchableOpacity style={styles.button}>
+            
+            <TouchableOpacity style={styles.button}
+                onPress={() => router.replace("/quiz")}
+            >
+                
                 <Text style={styles.buttonText}>Start</Text>
             </TouchableOpacity>
         </View>
@@ -24,10 +29,8 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     img: {
-        //banner
-        backgroundColor: "blue",
         width: "100%",
-        height: 250,
+        height: 500,
     },
     imgContainer: {
         display: "flex",
@@ -35,7 +38,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     button: {
-        backgroundColor: "#f4511e",
+        backgroundColor: "#5d5a8c",
         paddingHorizontal: 30,
         paddingVertical: 10,
         alignItems: "center",

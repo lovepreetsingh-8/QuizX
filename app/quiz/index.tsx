@@ -1,7 +1,7 @@
-// components/QuizPage.tsx
+
 
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, StyleSheet,Text, ScrollView, TouchableOpacity } from "react-native";
 import axios from "axios";
 import { Link } from "expo-router";
 
@@ -87,6 +87,7 @@ const QuizPage: React.FC = () => {
                         .map((answerOption, index) => (
                             <TouchableOpacity
                                 key={index}
+                                style={styles.optionButton}
                                 onPress={() =>
                                     handleAnswerButtonClick(
                                         answerOption ===
