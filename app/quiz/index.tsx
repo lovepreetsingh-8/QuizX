@@ -55,7 +55,7 @@ const QuizPage: React.FC = () => {
         );
     }
     return (
-        <ScrollView >
+        <ScrollView contentContainerStyle={styles.container} >
             {showScore ? (
                 <View>
                     <Text>
@@ -66,16 +66,16 @@ const QuizPage: React.FC = () => {
                         {score > 5 &&
                             "😊 You scored more than half!! well done"}
                     </Text>
-                    <Text >
+                    <Text style={styles.scoreText} >
                         You scored {score} out of {questions.length}
                     </Text>
-                    <Link href={"/"} >
-                        <Text >Home page</Text>
+                    <Link href={"/"} style={styles.backLink} >
+                        <Text style={styles.buttonText} >Home page</Text>
                     </Link>
                 </View>
             ) : (
                 <View>
-                    <Text >
+                    <Text style={styles.questionText}>
                         {decodeURIComponent(
                             questions[currentQuestionIndex].question
                         )}
@@ -95,7 +95,7 @@ const QuizPage: React.FC = () => {
                                     )
                                 }
                             >
-                                <Text >
+                                <Text style={styles.optionText} >
                                     {decodeURIComponent(answerOption)}
                                 </Text>
                             </TouchableOpacity>
@@ -106,5 +106,55 @@ const QuizPage: React.FC = () => {
         </ScrollView>
     );
 };
+
+
+const styles = StyleSheet.create({
+    optionButton: {
+        backgroundColor: "#8A2BE2", 
+        padding: 15,
+        borderRadius: 10,
+        marginVertical: 10,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    optionText: {
+        fontSize: 16,
+        color: "#fff",
+    },
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 20,
+    },
+    questionText: {
+        fontSize: 18,
+        fontWeight: "bold",
+        marginVertical: 20,
+        textAlign: "center",
+    },
+    scoreText: {
+        fontSize: 24,
+        fontWeight: "bold",
+        marginVertical: 20,
+        textAlign: "center",
+    },
+    backLink: {
+        backgroundColor: "#5d5a8c",
+        borderRadius: 10,
+        overflow: "hidden",
+        padding: 10,
+        marginHorizontal: "auto",
+        paddingHorizontal: 30,
+        paddingVertical: 10,
+        alignItems: "center",
+    },
+    buttonText: {
+        fontSize: 16,
+        fontWeight: "600",
+        color: "#fff",
+    },
+});
+
 
 export default QuizPage;
